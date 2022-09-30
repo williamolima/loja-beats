@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beats Disponíveis</title>
+    <meta th:insert="~{/fragments/base :: headfiles}">
 </head>
 <body>
-    <h2>Beats disponíveis</h2>
+    <div th:replace="~{/fragments/base :: header}" />
 
-    <form action="/beats/drop" method="get">
-        <input type="submit" value="Novo cadastro" />
-    </form>
-    <br />
+    <div class="container">
 
-    <div th:text="${mensagem}" style="color:blue; margin-bottom:10px;"></div>
+        <div class="card">
+            <div class="card-header">
+                Drop Beat
+            </div>
+        </div>
 
-    <table border="1">
-        <thead>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Categoria</th>
-        </thead>
-        <tbody>
-            <tr th:each="beat : ${beats}" style="padding: 3px;">
-            <td><a th:href="@{/beats/edite/{id}(id=${beat.id})}" th:text="${beat.titulo}"></a></td>
-            <td th:text="${beat.autor}"></td>
-            <td th:text="${categorias[beat.categoria]}"></td>
-        </tr>
-        </tbody>
-    </table>
+        <form th:action="@{/beats/drop}" method="get">
+            <button class="btn btn-primary" type="submit">Cadastre um beat</button>
+        </form>
+        <br />
+
+        <div th:text="${mensagem}" style="color:blue; margin-bottom:10px;"></div>
+
+        <table class="table table-stridep table-hover">
+            <thead>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Categoria</th>
+            </thead>
+            <tbody>
+                <tr th:each="beat : ${beats}" style="padding: 3px;">
+                <td><a th:href="@{/beats/edite/{id}(id=${beat.id})}" th:text="${beat.titulo}"></a></td>
+                <td th:text="${beat.autor}"></td>
+                <td th:text="${categorias[beat.categoria]}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
