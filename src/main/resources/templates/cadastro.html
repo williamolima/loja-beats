@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta th:insert="~{/fragments/base :: headfiles(titulo='Cadastre-se')}">
-</head>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}"
+    th:with="titulo='Cadastro'">
 <body>
-    <div th:replace="~{/fragments/base :: header}" />
-
-    <div class="conteiner">
+    <div layout:fragment="content">
         <div class="card">
             <div class="card-header">
                 Cadastre-se agora!

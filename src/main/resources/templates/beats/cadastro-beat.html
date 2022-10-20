@@ -5,15 +5,14 @@
 
 <body>
     <div layout:fragment="content">
-        <div class="container">
             <form th:action="@{/beats}" method="POST" th:object="${beat}">
                 <input type="hidden" th:field="*{id}" class="form-control" />
 
                 <label for="titulo" class="form-label">Título:</label>
-                <input type="text" th:field="*{titulo}" class="form-control"/> <br />
+                <input type="text" th:field="*{titulo}" class="form-control"/> <br/>
 
                 <label for="titulo" class="form-label">Autor:</label>
-                <input type="text" th:field="*{autor}" class="form-control/> <br />
+                <input type="text" th:field="*{autor}" class="form-control"/> <br/>
 
                 <label for="categoria" class="form-label">Categoria:</label>
                 <select th:field="*{categoria}" class="form-select">
