@@ -1,38 +1,30 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta th:insert="~{/fragments/base :: headfiles}">
-</head>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}"
+    th:with="titulo='Cadastro de Beats'">
+
 <body>
-    <div th:replace="~{/fragments/base :: header}" />
+    <div layout:fragment="content">
+        <div class="container">
+            <form th:action="@{/beats}" method="POST" th:object="${beat}">
+                <input type="hidden" th:field="*{id}" class="form-control" />
 
-    <div class="container">
+                <label for="titulo" class="form-label">Título:</label>
+                <input type="text" th:field="*{titulo}" class="form-control"/> <br />
 
-        <div class="card">
-            <div class="card-header">Drop Beat</div>
+                <label for="titulo" class="form-label">Autor:</label>
+                <input type="text" th:field="*{autor}" class="form-control/> <br />
 
-            <div class="card-body">
-                <form th:action="@{/beats}" method="POST" th:object="${beat}">
-                    <input type="hidden" th:field="*{id}" class="form-control" />
-
-                    <label for="titulo" class="form-label">Título:</label>
-                    <input type="text" th:field="*{titulo}" /> <br />
-
-                    <label for="titulo" class="form-label">Autor:</label>
-                    <input type="text" th:field="*{autor}" /> <br />
-
-                    <label for="categoria" class="form-label">Categoria:</label>
-                    <select th:field="*{categoria}" class="form-select">
-                        <option th:each="e : ${categorias}"
-                            th:value="${e.key}"
-                            th:text="${e.value}"
-                            th:setected="${e.key == categoria}">
-                        </option>
-                    </select> <br />
-                    <input type="submit" value="Salvar" />
-                </form>
-            </div>
-        </div>
+                <label for="categoria" class="form-label">Categoria:</label>
+                <select th:field="*{categoria}" class="form-select">
+                    <option th:each="e : ${categorias}"
+                        th:value="${e.key}"
+                        th:text="${e.value}"
+                        th:setected="${e.key == categoria}">
+                    </option>
+                </select> <br />
+                <input type="submit" value="Salvar" />
+            </form>
     </div>
 </body>
 </html>

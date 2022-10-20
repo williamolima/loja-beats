@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
-    <head>
-            <title>Jampa Crew</title>
-    </head>
-    <body>
-        <h1>Olá! Seja bem-vindo.</h1>
-
-        Usuário logado: <span th:text="${login}"></span>
-    </body>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout}"
+    th:with="titulo='Bem-vindo'">
+<body>
+    <div layout:fragment="content">
+            <h1>Olá! Seja bem-vindo.</h1>
+    
+            Usuário logado: <span th:text="${login}"></span>
+    </div>
+    
 </html>

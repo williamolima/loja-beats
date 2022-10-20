@@ -26,6 +26,7 @@ public class BeatController {
     @RequestMapping("/drop")
     public ModelAndView getFormBeat(ModelAndView model){
         model.setViewName("beats/cadastro-beat");
+        model.addObject("menu", "cadastrar");
         model.addObject("beat", new Beat());
         return model;
     }
@@ -70,6 +71,7 @@ public class BeatController {
     @RequestMapping(method = { RequestMethod.GET })
     public ModelAndView listeBeatsCadastrados(ModelAndView model) {
         model.setViewName("beats/list-beat");
+        model.addObject("menu", "listar");
         model.addObject("beats", beatsRepository.findAll());
         return model;
     }
